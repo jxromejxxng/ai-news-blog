@@ -1,0 +1,12 @@
+title: AI News Blog
+description: "The latest shocking news about AGI and AI, explained in plain English."
+url: "https://jxromejxxng.github.io"
+baseurl: "/ai-news-blog" # the subpath of your site, e.g. /blog
+theme: minima
+
+# Build settings
+markdown: kramdown
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
