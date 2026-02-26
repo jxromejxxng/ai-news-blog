@@ -44,6 +44,6 @@ jobs:
         if git diff-index --quiet HEAD; then
           echo "No new articles to commit."
         else
-          git commit -m "Auto-published new AI blog posts [skip ci]"
+          git commit -m "Auto-published new AI blog posts"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
         fi
