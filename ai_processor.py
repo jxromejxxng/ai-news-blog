@@ -29,7 +29,12 @@ def generate_blog_post(article):
     content = article.get('content', '')
     source = article.get('source', '')
     link = article.get('link', '')
-    date = article.get('published', '')
+    image_url = article.get('image', '')
+    
+    import datetime
+    current_date = datetime.datetime.now().strftime("%Y-%m-%d")
+    
+    image_instruction = f"At the top of the post body (right after the YAML frontmatter), you MUST include this exact markdown image code: `![Article Image]({image_url})`" if image_url else ""
     
     logger.info(f"Generating English Markdown post for: {title} using Gemini")
     
@@ -41,22 +46,24 @@ def generate_blog_post(article):
     - Original Title: {title}
     - Original Source: {source}
     - Reference Link: {link}
+    - Image URL: {image_url}
     - Content Summary: {content[:3000]}
 
     [Guidelines]
     1. **Format**: Create a standard Markdown document (.md).
-    2. **Frontmatter**: You MUST start the document with valid YAML frontmatter containing 'title', 'date', 'categories' (set to AI), 'tags', 'layout' (must be exactly 'post'), and 'author' (set to 'Jeong').
-    3. **Tone**: Engaging, conversational, sophisticated, and slightly opinionated. Sound like a passionate human expert sharing a brilliant insight with a peer. Never use AI robotic phrases like "As an AI..." or "In conclusion".
-    4. **Core Content Focus**: 
+    2. **Frontmatter**: You MUST start the document with valid YAML frontmatter containing 'title', 'date' (MUST BE EXACTLY {current_date}), 'categories' (set to AI), 'tags', 'layout' (must be exactly 'post'), and 'author' (set to 'Jeong').
+    3. **Images**: {image_instruction}
+    4. **Tone**: Engaging, conversational, sophisticated, and slightly opinionated. Sound like a passionate human expert sharing a brilliant insight with a peer. Never use AI robotic phrases like "As an AI..." or "In conclusion".
+    5. **Core Content Focus**: 
        - Emphasize practical applications, industry disruption, and real-world tools.
        - Highlight key figures or companies leading the charge, and major paradigm shifts.
-    5. **Structure**: 
+    6. **Structure**: 
        - An intriguing, hook-driven introduction (Why does this matter today?).
        - A "TL;DR" bulleted summary.
        - Deep dive into the facts (simplify complex terms with compelling analogies).
        - **The Ripple Effect**: How this disrupts industries or changes our daily lives (share a strong personal perspective/prediction).
        - A thought-provoking conclusion.
-    6. At the very bottom, include a small "Source: [Title](Link)" credit.
+    7. At the very bottom, include a small "Source: [Title](Link)" credit.
     
     Output nothing but the raw Markdown content! Do not wrap in ```markdown blocks if possible.
     """

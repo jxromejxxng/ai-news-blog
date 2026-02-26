@@ -54,6 +54,21 @@ def fetch_rss_feeds():
             elif 'summary' in entry:
                 content = entry.summary
                 
+            # Extract image
+            image_url = ""
+            if 'media_content' in entry and len(entry.media_content) > 0:
+                image_url = entry.media_content[0].get('url', '')
+            elif 'media_thumbnail' in entry and len(entry.media_thumbnail) > 0:
+                image_url = entry.media_thumbnail[0].get('url', '')
+            
+            # Try to extract from content HTML if not found in media
+            if not image_url and (content or 'summary' in entry):
+                html_to_check = content if content else entry.get('summary', '')
+                soup_img = BeautifulSoup(html_to_check, "html.parser")
+                img_tag = soup_img.find('img')
+                if img_tag and img_tag.get('src'):
+                    image_url = img_tag.get('src')
+            
             clean_text = clean_html(content)
             
             # Simple crude filtering: only articles likely about AI
@@ -63,7 +78,8 @@ def fetch_rss_feeds():
                     'link': link,
                     'content': clean_text,
                     'source': feed.feed.get('title', feed_url),
-                    'published': entry.get('published', '')
+                    'published': entry.get('published', ''),
+                    'image': image_url
                 })
     
     return articles
