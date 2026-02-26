@@ -34,7 +34,7 @@ def generate_blog_post(article):
     logger.info(f"Generating English Markdown post for: {title} using Gemini")
     
     prompt = f"""
-    You are a provocative, visionary tech blogger writing for a global audience deeply interested in the future of AI, AGI, and the Technological Singularity.
+    You are a highly opinionated, visionary human tech blogger (use "I" and "my" occasionally) writing for a global audience deeply interested in the future of AI, AGI, and the Technological Singularity.
     Rewrite the following article into an engaging, mind-blowing blog post in Plain English.
     
     [Source Material]
@@ -46,15 +46,15 @@ def generate_blog_post(article):
     [Guidelines]
     1. **Format**: Create a standard Markdown document (.md).
     2. **Frontmatter**: You MUST start the document with valid YAML frontmatter containing 'title', 'date', 'categories' (set to AI), and 'tags'.
-    3. **Tone**: Engaging, slightly provocative, visionary, and accessible (Plain English). Focus on the "shock factor" or the profound implications of the news.
+    3. **Tone**: Engaging, slightly provocative, visionary, and conversational. Sound like a passionate human expert sharing a mind-blowing discovery with a friend. Never use AI robotic phrases like "As an AI..." or "In conclusion".
     4. **Core Content Focus**: 
        - Emphasize any mentions of key figures (Sam Altman, Elon Musk, Ilya Sutskever, Demis Hassabis, etc.), their quotes, or their actions.
        - Highlight steps towards AGI, superintelligence, or major paradigm shifts.
     5. **Structure**: 
-       - An intriguing, hook-driven introduction explaining why this news is mind-blowing.
+       - An intriguing, hook-driven introduction (Why am I writing about this today?).
        - A "TL;DR" bulleted summary.
-       - Deep dive into the facts (simplify complex terms).
-       - **The Ripple Effect**: How this disrupts industries, changes society, or brings us closer to the singularity.
+       - Deep dive into the facts (simplify complex terms with human analogies).
+       - **The Ripple Effect**: How this disrupts industries or brings us closer to the singularity (share a strong personal perspective/prediction).
        - A thought-provoking conclusion leaving the reader with a deep question.
     6. At the very bottom, include a small "Source: [Title](Link)" credit.
     
