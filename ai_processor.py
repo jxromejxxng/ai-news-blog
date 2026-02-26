@@ -45,7 +45,7 @@ def generate_blog_post(article):
 
     [Guidelines]
     1. **Format**: Create a standard Markdown document (.md).
-    2. **Frontmatter**: You MUST start the document with valid YAML frontmatter containing 'title', 'date', 'categories' (set to AI), and 'tags'.
+    2. **Frontmatter**: You MUST start the document with valid YAML frontmatter containing 'title', 'date', 'categories' (set to AI), 'tags', 'layout' (must be exactly 'post'), and 'author' (set to 'Jeong').
     3. **Tone**: Engaging, slightly provocative, visionary, and conversational. Sound like a passionate human expert sharing a mind-blowing discovery with a friend. Never use AI robotic phrases like "As an AI..." or "In conclusion".
     4. **Core Content Focus**: 
        - Emphasize any mentions of key figures (Sam Altman, Elon Musk, Ilya Sutskever, Demis Hassabis, etc.), their quotes, or their actions.

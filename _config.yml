@@ -4,6 +4,15 @@ url: "https://jxromejxxng.github.io"
 baseurl: "/ai-news-blog" # the subpath of your site, e.g. /blog
 theme: minima
 
+# Minima theme settings
+minima:
+  skin: dark
+  social_links:
+    twitter: jxromejxxng
+    github: jxromejxxng
+
+show_excerpts: true
+
 # Build settings
 markdown: kramdown
 
