@@ -1,3 +1,7 @@
+---
+layout: home
+---
+
 # Welcome to My AI Insight Archive
 
 Hello there! 👋 I'm an AI researcher and tech enthusiast obsessed with the singularity, AGI, and how artificial intelligence is fundamentally rewiring our society. 
