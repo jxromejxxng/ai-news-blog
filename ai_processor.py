@@ -37,28 +37,27 @@ def generate_roundup_post(articles):
     logger.info(f"Generating Daily Roundup English Markdown post using Gemini for {len(articles)} articles")
     
     prompt = f"""
-    You are a highly opinionated, insightful human tech YouTuber and newsletter editor (use "I" and "my" occasionally) writing for a global audience deeply interested in artificial intelligence, practical tech tools, and the future of business.
-    Your mission is to read the following breaking news items and synthesize them into ONE brilliant, highly engaging "Daily AI Roundup" or "Tech Newsletter" style blog post in Plain English.
+    You are a friendly, practical, and insightful tech reviewer (like the YouTuber JoCoding) writing for people who want to understand how AI is changing their work and life. 
+    Your mission is to summarize these breaking news items into ONE clear, approachable "Daily AI Briefing" blog post.
     
     {articles_text}
 
     [Guidelines]
     1. **Format**: Create a standard Markdown document (.md).
-    2. **Language**: English, Plain English.
-    3. **Tone**: Engaging, conversational, sophisticated, and opinionated. Sound like a passionate human expert directly talking to an audience (like a YouTuber script). Never use AI robotic phrases like "As an AI..." or "In conclusion".
-    4. **Core Content Focus**: 
-       - Don't just list them one by one. Find the narrative thread between them or present them as the "Top Breaking Stories of the Day."
-       - Emphasize practical applications, industry disruption, and real-world tools.
-       - Highlight key figures or companies leading the charge.
-    5. **Structure**: 
-       - A **catchy YAML frontmatter** at the very top. MUST contain 'title' (create a provocative overarching title covering today's news), 'date' (MUST BE EXACTLY {current_date}), 'categories' (set to AI), 'tags', 'layout' (must be exactly 'post'), and 'author' (set to 'Jeong').
-       - A **hook-driven introduction** (Why am I excited about today's news?).
-       - **The Meat**: Break down the most important news items from the list contextually. 
-       - **Images**: Whenever you talk about a specific news item that has an 'Image URL' provided, you MUST embed it in the markdown like this: `![Alt text](Image URL)`
-       - **Links**: Hyperlink the original source links contextually when you mention the news.
-       - A **thought-provoking sign-off** (Outro).
+    2. **Language**: Plain English.
+    3. **Tone**: Direct, friendly, and practical. Sound like an expert friend explaining news clearly. **AVOID** overly dramatic or cringey "visionary" language like "collision course with superintelligence" or "rewiring our souls." Keep it grounded in facts and utility.
+    4. **Source Attribution**: For every news item you discuss, you MUST include a clickable source link (e.g., [Source Name](URL)) immediately after that section.
+    5. **Core Content Focus**: 
+       - Summarize the top 3-5 most impactful stories from the list.
+       - Focus on how people can use these tools or why companies should care.
+    6. **Structure**: 
+       - Catchy YAML frontmatter: 'title' (informative, not clickbaity), 'date' (EXACTLY {current_date}), 'categories' (AI), 'tags', 'layout' (post), 'author' (Jeong).
+       - Friendly intro (e.g., "Hey everyone, here's a quick update on today's AI trends...").
+       - Sectioned body with H2/H3 headers.
+       - **Images**: Embed the 'Image URL' using `![Alt text](Image URL)` for relevant items.
+       - Thought-provoking but grounded outro.
     
-    Output nothing but the raw Markdown content containing the YAML frontmatter and the body! Do not wrap in ```markdown blocks if possible.
+    Output nothing but the raw Markdown content!
     """
     
     try:
