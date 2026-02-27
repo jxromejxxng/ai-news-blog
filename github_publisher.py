@@ -12,9 +12,9 @@ POSTS_DIR = os.getenv("POSTS_DIR", "./_posts")
 def create_slug(title):
     """Convert a title into a URL-friendly slug."""
     # Remove non-alphanumeric characters, replace spaces with hyphens, lowercase
-    slug = re.sub(r'[^a-zA-Z0-9\s]', '', title)
+    slug = re.sub(r'[^a-zA-Z0-9\s]', '', title).strip()
     slug = re.sub(r'\s+', '-', slug).lower()
-    return slug[:50] # Limit length
+    return slug[:50] if slug else "daily-update" # Fallback if slug is empty
 
 def publish_to_github_pages(title, markdown_content):
     """
