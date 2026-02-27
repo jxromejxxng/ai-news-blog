@@ -11,6 +11,9 @@ minima:
     twitter: jxromejxxng
     github: jxromejxxng
 
+# Analytics & SEO
+google_analytics: "G-XXXXXXXXXX" # User needs to replace this with their GA4 ID
+
 show_excerpts: true
 
 # Build settings
@@ -19,3 +22,4 @@ markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
