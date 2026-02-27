@@ -83,9 +83,10 @@ def generate_roundup_post(articles):
         generated_md = generated_md.strip()
         
         # Extract title from YAML frontmatter
-        title = f"AI Daily Briefing - {current_date}"
+        title = f"AI Daily Briefing {current_date}"
         import re
-        title_match = re.search(r'^title:\s*["\']?(.*?)["\']?', generated_md, re.MULTILINE)
+        # More robust title extraction: find title property, handle optional quotes
+        title_match = re.search(r'^title:\s*["\']?(.+?)["\']?$', generated_md, re.MULTILINE)
         if title_match:
             title = title_match.group(1).strip()
             
